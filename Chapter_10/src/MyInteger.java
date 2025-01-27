@@ -1,49 +1,75 @@
 /*
         MyInteger
 -------------------------
-+isEven(value: int): boolean
-+isOdd(value: int): boolean
-+isPrime(value: int): boolean
-
-+isEven(MyInteger: int): boolean
-+isOdd(MyInteger: int): boolean
-+isPrime(MyInteger: int): boolean
-
 static parseInt(charArray: char[]): int
-static parseInt(stringArray: String[])
+static parseInt(stringArray: String[]): int
  */
 
-import javax.swing.plaf.TreeUI;
-
 class MyInteger {
-    static int numObject = 0;
     private int value;
-
-    public MyInteger() {
-        this.value = ++numObject;
+ 
+    public MyInteger(int value) {
+        this.value = value;
     }
-
+ 
     public int getValue() {
         return value;
     }
 
+    // is this.value even
     public boolean isEven() {
         if (value % 2 == 0)
             return true;
         else
             return false;
     }
+    // is any number input into the method even
+    public static boolean isEven(int anyNumber) {
+        if (anyNumber % 2 == 0)
+            return true;
+        else
+            return false;
+    }
+    // is this.value odd
     public boolean isOdd() {
         if (value % 2 == 1)
             return true;
         else;
             return false;
     }
+    // is any number input into the method odd
+    public static boolean isOdd(int anyNumber) {
+        if (anyNumber % 2 == 1)
+            return true;
+        else;
+            return false;
+    }
+    // is this.value prime
     public boolean isPrime() {
-        for (int i = 1; i < value; i++) {
-            if (value % i == 0)
+        if (value <= 1)
+            return false;
+
+        for (int i = 2; i <= value; i++) {
+            if (value % i == 0 && value == i)
                 return true;
+            else if (value % i == 0)
+                return false;
         }
+        
         return false;
     }
- }
+    // is any number input into the method prime
+    public static boolean isPrime(int anyNumber) {
+        if (anyNumber <= 1)
+            return false;
+
+        for (int i = 2; i <= anyNumber; i++) {
+            if (anyNumber % i == 0 && anyNumber == i)
+                return true;
+            else if (anyNumber % i == 0)
+                return false;
+        }
+        
+        return false;
+    }
+}
