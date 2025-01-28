@@ -1,3 +1,13 @@
+/*
+Author: Miles Wiser
+Date: 1/28/2025
+
+This program allows for the creation of the object "MyInteger". It comes with methods to determine if the given
+    value, object values, or any integer are even, odd, and/or prime. Additionally, there are methods to
+    determine if any integer or another instance's value are equal to the specified object. Finally, there are
+    methods to sum an array of characters and convert a String of digits to an integer.
+*/
+
 public class Exercise10_3 {
     public static void main(String[] args) {
 
