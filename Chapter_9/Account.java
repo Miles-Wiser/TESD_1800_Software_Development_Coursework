@@ -1,38 +1,39 @@
 import java.util.Date;
+
 class Account {
     private int id = 0;
     private double balance = 0;
     private static double annualInterestRate = 0;
-    Date dateCreated = new Date();
+    private Date dateCreated = new Date();
 
-    // Instances
+    /// Instances
     Account() {
     }
 
-    Account(int newId, double newBalance) {
-        id = newId;
-        balance = newBalance;
+    Account(int id, double balance) {
+        this.id = id;
+        this.balance = balance;
     }
 
-    // id accessor and mutator
+    /// ID methods
     public int getId() {
         return id;
     }
 
-    public void setId(int changeId) {
-        id = changeId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    // balance accessor and mutator
+    /// balance methods
     public double getBalance() {
         return balance;
     }
     
-    public void setBalance(double changeBalance) {
-        balance = changeBalance;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
-    // annualInterestRate accessor and mutator
+    /// annualInterestRate methods
     public static double getAnnualInterstRate() {
         return annualInterestRate;
     }
@@ -41,7 +42,6 @@ class Account {
         annualInterestRate = newRate / 100;
     }
 
-    // dateCreated accessor
     public Date getDateCreated() {
         return dateCreated;
     }
@@ -54,15 +54,11 @@ class Account {
         return balance * getAnnualInterstRate();
     }
 
-    double withdraw(double amount) {
+    void withdraw(double amount) {
         balance -= amount;
-
-        return balance;
     }
 
-    double deposit(double amount) {
+    void deposit(double amount) {
         balance += amount;
-
-        return balance;
     }
 }
