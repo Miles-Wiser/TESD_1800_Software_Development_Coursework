@@ -1,3 +1,13 @@
+/*
+Author: Miles Wiser
+Date: 2/7/2025
+
+    This program creates an array of 100 random integers. It then asks the user
+to enter an index of the array to be displayed. If the index is out of bounds,
+an exception will be thrown. It will then ask the user to try again until the
+chosen index is within the limits of the array.
+*/
+
 import java.util.Scanner;
 
 public class Exercise12_3 {
