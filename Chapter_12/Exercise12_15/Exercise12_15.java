@@ -1,5 +1,13 @@
+/*
+Author: Miles Wiser
+Date: 2/10/2025
+
+    This program checks for file "Exercise12_15.txt." If it doesn't exist, a
+new file with the same name is created containing 100 integers. Finally, the
+integers will be read and displayed to the user in ascending order.
+*/
+
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Exercise12_15 {
@@ -14,21 +22,31 @@ public class Exercise12_15 {
             // Generate a file
             PrintWriter output = new PrintWriter(file);
             
-            for (int i = 0; i < 10; i++)
-                output.print((int)(Math.random() * 10) + " ");
+            for (int i = 0; i < 100; i++)
+                output.print((int)(Math.random() * 100 + 1) + " ");
             
             output.close();
         }
 
         // Read from file
         Scanner input = new Scanner(file);
-        ArrayList<Integer> inputArray = new ArrayList<>();
+        int[] inputArray = new int[100];
 
-        // Display in order
+        int i = 0;
         while (input.hasNext()) {
-            inputArray.add(input.nextInt());
+            inputArray[i] = input.nextInt();
+            i++;
         }
-        for (int i = 0; i < inputArray.size(); i ++)
-            System.out.print(inputArray.get(i) + " ");
+        input.close();
+
+        // Sort and Display
+        java.util.Arrays.sort(inputArray);
+        for (int j = 0; j < inputArray.length; j++) {
+            // Display in rows of 10
+            if (j % 10 == 0)
+                System.out.println();
+
+            System.out.print(inputArray[j] + " ");
+        }
     }
 }
