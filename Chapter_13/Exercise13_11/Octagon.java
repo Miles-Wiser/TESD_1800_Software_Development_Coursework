@@ -11,14 +11,23 @@ public class Octagon extends GeometricObject
         this.side = side;
     }
 
+    /**
+     * Returns the side length of the object.
+     * 
+     * @return {@code this.side}
+     */
     public double getSide() {
         return side;
     }
-
-    /** Returns a string representation of this object.
+    /**
+     * Sets the side equal to {@code side}.
      * 
-     * @return a string representation of this object.
+     * @param side
      */
+    public void setSide(double side) {
+        this.side = side;
+    }
+
     public String toString() {
         return "Octagon: side = " + this.side + ", " + super.toString();
     }
@@ -65,17 +74,17 @@ public class Octagon extends GeometricObject
             return 0;
     }
 
-    // /**
-    //  * clone()
-    //  */
-    // @Override
-    // public Octagon clone() throws CloneNotSupportedException {
-    //     try {
-    //         return this.clone();
-    //     }
-    //     catch (CloneNotSupportedException ex) {
-    //         return null;
-    //     }
-    // }
+    @Override
+    public Octagon clone() throws CloneNotSupportedException {
+        try {
+            Octagon octagonClone = (Octagon)super.clone();
+
+            octagonClone.side = side;
+            return octagonClone;
+        }
+        catch (CloneNotSupportedException ex) {
+            return null;
+        }
+    }
 
 }
