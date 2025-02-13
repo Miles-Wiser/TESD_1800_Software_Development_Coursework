@@ -24,7 +24,9 @@ public class Triangle extends GeometricObject implements Colorable {
         return side3;
     }
 
-    /** toString method */
+    /**
+     * Return a {@code String} implementation of this object.
+    */
     @Override
     public String toString() {
         return "Triangle: s1 = " + side1 + ", s2 = " + side2 + ", s3 = " + side3
@@ -32,12 +34,12 @@ public class Triangle extends GeometricObject implements Colorable {
     }
 
     /**
-     * Returns the {@code double} area of the triangle.
-     * Special cases:
+     * Returns the {@code double} area of a {@code Triangle} instance.
+     * <p>Special cases:
      * <ul><li>If the value of any one side is greater than sum of the other two,
-     * the divisor will be 0 and returns NaN.
+     * the divisor will be {@code 0} and returns {@code NaN}.
      * <li>If the value of any one side is equal to the sum of the other two,
-     * the result will be 0, meaning a degenerate triangle. </ul>
+     * the result will be {@code 0} and returns {@code 0}. </ul>
      * Otherwise, the result is the {@code double} value closest to the area as
      * defined by Heron's formula.
     */
@@ -47,13 +49,20 @@ public class Triangle extends GeometricObject implements Colorable {
         return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
     }
 
-    /** getPerimeter method */
+    /**
+     * Returns the {@code double} perimeter of a {@code Triangle} instance.
+     * <p>Note:
+     * <ul><li>This does not check for negative lengths. Can return negative
+     * perimeters if unchecked.</ul>
+    */
     @Override
     public double getPerimeter() {
         return side1 + side2 + side3;
     }
 
-    /** interface Colorable: howToColor() */
+    /**
+     * Prints a {@code String} defining how to color the instance.
+     */
     @Override
     public void howToColor() {
         if (this.getColor() != null)
