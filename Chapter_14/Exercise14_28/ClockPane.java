@@ -10,6 +10,9 @@ public class ClockPane extends Pane {
   private int hour;
   private int minute;
   private int second;
+  private boolean hourHandVisible = true;
+  private boolean minuteHandVisible = true;
+  private boolean secondHandVisible = true;  
   
   /** Construct a default clock with the current time*/
   public ClockPane() {
@@ -21,6 +24,18 @@ public class ClockPane extends Pane {
     this.hour = hour;
     this.minute = minute;
     this.second = second;
+  }
+
+  /** Construct a clock with specified hour, minute, second, hourHandVisible
+   * minuteHandVisible, and secondHandVisible */
+  public ClockPane(int hour, int minute, int second, boolean hourHandVisible,
+    boolean minuteHandVisible, boolean secondHandVisible) {
+    this.hour = hour;
+    this.minute = minute;
+    this.second = second;
+    this.hourHandVisible = hourHandVisible;
+    this.minuteHandVisible = minuteHandVisible;
+    this.secondHandVisible = secondHandVisible;
   }
 
   /** Return hour */
@@ -53,6 +68,39 @@ public class ClockPane extends Pane {
   /** Set a new second */
   public void setSecond(int second) {
     this.second = second;
+    paintClock();
+  }
+
+  /** Return hourHandVisible */
+  public boolean isHourHandVisible() {
+    return hourHandVisible;
+  }
+
+  /** Set a new hourHandVisible */
+  public void setHourHandVisible(boolean hourHandVisible) {
+    this.hourHandVisible = hourHandVisible;
+    paintClock();
+  }
+
+  /** Return minuteHandVisible */
+  public boolean isMinuteHandVisible() {
+    return minuteHandVisible;
+  }
+
+  /** Set a new minuteHandVisible */
+  public void setMinuteHandVisible(boolean minuteHandVisible) {
+    this.minuteHandVisible = minuteHandVisible;
+    paintClock();
+  }
+
+  /** Return secondHandVisible */
+  public boolean isSecondHandVisible() {
+    return secondHandVisible;
+  }
+
+  /** Set a new secondHandVisible */
+  public void setSecondHandVisible(boolean secondHandVisible) {
+    this.secondHandVisible = secondHandVisible;
     paintClock();
   }
   
@@ -95,6 +143,7 @@ public class ClockPane extends Pane {
     Line sLine = new Line(centerX, centerY, secondX, secondY);
     sLine.setStroke(Color.RED);
 
+
     // Draw minute hand
     double mLength = clockRadius * 0.65;
     double xMinute = centerX + mLength * 
@@ -114,7 +163,13 @@ public class ClockPane extends Pane {
     hLine.setStroke(Color.GREEN);
     
     getChildren().clear();  
-    getChildren().addAll(circle, t1, t2, t3, t4, sLine, mLine, hLine);
+    getChildren().addAll(circle, t1, t2, t3, t4);
+    if (secondHandVisible)
+      getChildren().add(sLine);
+    if (minuteHandVisible)
+      getChildren().add(mLine);
+    if (hourHandVisible)
+      getChildren().add(hLine);
   }
   
   @Override
