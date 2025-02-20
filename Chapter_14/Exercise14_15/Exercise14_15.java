@@ -1,3 +1,10 @@
+/**
+Author: Miles Wiser
+Date: 2/20/2025
+
+	This program visually create a stop sign using the "MyPolygon" class.
+*/
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
