@@ -1,3 +1,11 @@
+/*
+Author: Miles Wiser
+Date 2/25/2025
+
+   This program creates a circle and four buttons. When the buttons are pressed, the ball
+will go in the direction corresponding with the button's name. The ball's movement will
+not go past the borders of the window.
+*/
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
