@@ -11,7 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
     	
     	// temporary pane
-    	TextLR pane = new TextLR();
+    	PrimaryPane pane = new PrimaryPane();
     	
     	
     	// Scene and Stage
