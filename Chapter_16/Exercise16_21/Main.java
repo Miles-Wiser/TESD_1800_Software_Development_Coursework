@@ -61,8 +61,6 @@ public class Main extends Application {
 					e -> {
 						int intTime = Integer.parseInt(txtCountdown.getText()) - 1;
 						txtCountdown.setText("" + intTime);
-						System.out.println(intTime + "seconds");
-
 					}
 				)
 			);
