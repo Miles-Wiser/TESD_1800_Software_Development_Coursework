@@ -1,11 +1,13 @@
 /*
 Author: Miles Wiser
-Date: 2/27/2025
+Date: 2/28/2025
 
-	This programs displays a string in a window. The text's color and horizontal
-postion can be manipulated using radio and regular buttons.
+	This program asks the user to enter a time in seconds. Upon pressing enter,
+the time will appear in the middle of the screen and begin counting down. When
+finished, audio will play until the program is closed.
 */
 
+import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -14,6 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -25,6 +29,10 @@ public class Main extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+		final String MEDIA_URL = "https://liveexample.pearsoncmg.com/common/audio/anthem/anthem0.mp3";
+		Media media = new Media(MEDIA_URL);
+		MediaPlayer mediaPlayer = new MediaPlayer(media);
+
 	    // Primary pane
     	BorderPane primaryPane = new BorderPane();
     	
@@ -43,19 +51,29 @@ public class Main extends Application {
     	hBox.getChildren().setAll(lbTimeEntry, tfTimeEntry);
     	primaryPane.setTop(hBox);
     	
-    	Text txtTimeEntry = new Text(tfTimeEntry.getText());
-    	primaryPane.setCenter(txtTimeEntry);
-    	
-    	tfTimeEntry.setOnAction(e -> {
+		// Countdown
+    	Text txtCountdown = new Text(tfTimeEntry.getText());
+    	primaryPane.setCenter(txtCountdown);
+
+    	tfTimeEntry.setOnAction(ev -> {
     		tfTimeEntry.setText(tfTimeEntry.getText());
-    		txtTimeEntry.setText(tfTimeEntry.getText());
+    		txtCountdown.setText(tfTimeEntry.getText());
+
+			Timeline animation = new Timeline(
+				new KeyFrame(Duration.millis(1000),
+					// Take time remaining and subtract one; Display remaining time.
+					e -> {
+						int intTime = Integer.parseInt(txtCountdown.getText()) - 1;
+						txtCountdown.setText("" + intTime);
+						System.out.println("Testing");
+					}
+				)
+			);
+
+			animation.setCycleCount(Timeline.INDEFINITE);
+			animation.play();
+
     	});
-    	
-    	
-    	
-    	Timeline animation = new Timeline(Duration.millis(1000), eventHandler);
-    	animation.setCycleCount(Timeline.INDEFINITE);
-    	animation.play();
     	
     	// Scene and Stage
     	Scene scene = new Scene(primaryPane, 500, 300);
