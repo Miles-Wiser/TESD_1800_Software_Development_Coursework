@@ -29,10 +29,6 @@ public class Main extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-		final String MEDIA_URL = "https://liveexample.pearsoncmg.com/common/audio/anthem/anthem0.mp3";
-		Media media = new Media(MEDIA_URL);
-		MediaPlayer mediaPlayer = new MediaPlayer(media);
-
 	    // Primary pane
     	BorderPane primaryPane = new BorderPane();
     	
@@ -65,14 +61,21 @@ public class Main extends Application {
 					e -> {
 						int intTime = Integer.parseInt(txtCountdown.getText()) - 1;
 						txtCountdown.setText("" + intTime);
-						System.out.println("Testing");
+						System.out.println(intTime + "seconds");
+
 					}
 				)
 			);
 
-			animation.setCycleCount(Timeline.INDEFINITE);
+			animation.setCycleCount(Integer.parseInt(txtCountdown.getText()));
 			animation.play();
 
+			// Audio
+			final String MEDIA_URL = "https://liveexample.pearsoncmg.com/common/audio/anthem/anthem0.mp3";
+			Media media = new Media(MEDIA_URL);
+			MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+			animation.setOnFinished(e -> mediaPlayer.play());
     	});
     	
     	// Scene and Stage
