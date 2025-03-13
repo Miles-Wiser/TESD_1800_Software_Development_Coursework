@@ -44,22 +44,17 @@ public class Main extends Application {
 
         Label lblCurrenttime = new Label(timeString);
 
-
-
         // Place clock
         BorderPane pane = new BorderPane();
         pane.setCenter(clock);
         pane.setBottom(lblCurrenttime);
         BorderPane.setAlignment(lblCurrenttime, Pos.TOP_CENTER);
         
-
         // Scene
         Scene scene = new Scene(pane, 250, 250);
         primaryStage.setTitle(("Clock"));
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
     }
 
 }

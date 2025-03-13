@@ -126,13 +126,33 @@ public class ClockPane extends Pane {
     double centerY = getHeight() / 2;
 
     // Draw circle
+    final double VAL_SQRT = Math.sqrt(3) / 2;
+    final double VAL_HALF = .5;
+    final double INNER_RADIUS_P =  clockRadius - 15;
+    final double INNER_RADIUS_N =  clockRadius - 3;
     Circle circle = new Circle(centerX, centerY, clockRadius);
     circle.setFill(Color.WHITE);
     circle.setStroke(Color.BLACK);
-    Text t1 = new Text(centerX - 5, centerY - clockRadius + 12, "12");
-    Text t2 = new Text(centerX - clockRadius + 3, centerY + 5, "9");
-    Text t3 = new Text(centerX + clockRadius - 10, centerY + 3, "3");
-    Text t4 = new Text(centerX - 3, centerY + clockRadius - 3, "6");
+
+    // Text t1 = new Text(centerX - 5, centerY - clockRadius + 12, "12");
+    // Text t2 = new Text(centerX - clockRadius + 3, centerY + 5, "9");
+    // Text t3 = new Text(centerX + clockRadius - 10, centerY + 3, "3");
+    // Text t4 = new Text(centerX - 3, centerY + clockRadius - 3, "6");
+
+    Text t1 = new Text(centerX - 6, centerY - INNER_RADIUS_P, "12");
+    Text t2 = new Text(centerX - INNER_RADIUS_N + 3, centerY + 5, "9");
+    Text t3 = new Text(centerX + INNER_RADIUS_P + 3, centerY + 3, "3");
+    Text t4 = new Text(centerX - 6, centerY + INNER_RADIUS_P + 12, "6");
+
+    Text tOne = new Text(centerX + (INNER_RADIUS_P * VAL_HALF), centerY - (INNER_RADIUS_P * VAL_SQRT), "1");
+    Text tSeven = new Text(centerX -(INNER_RADIUS_N * VAL_HALF), centerY + (INNER_RADIUS_N * VAL_SQRT), "7");
+    Text tFive = new Text(centerX + (INNER_RADIUS_P * VAL_HALF), centerY + (INNER_RADIUS_N * VAL_SQRT), "5");
+    Text tEleven = new Text(centerX - (INNER_RADIUS_N * VAL_HALF), centerY - (INNER_RADIUS_P * VAL_SQRT), "11");
+
+    Text tTwo = new Text(centerX + (INNER_RADIUS_P * VAL_SQRT), centerY - (INNER_RADIUS_P * VAL_HALF), "2");
+    Text tEight = new Text(centerX -(INNER_RADIUS_N * VAL_SQRT), centerY + (INNER_RADIUS_N * VAL_HALF), "8");
+    Text tFour = new Text(centerX + (INNER_RADIUS_P * VAL_SQRT), centerY + (INNER_RADIUS_N * VAL_HALF), "4");
+    Text tTen = new Text(centerX - (INNER_RADIUS_N * VAL_SQRT), centerY - (INNER_RADIUS_P * VAL_HALF), "10");
     
     // Draw second hand
     double sLength = clockRadius * 0.8;
@@ -163,7 +183,7 @@ public class ClockPane extends Pane {
     hLine.setStroke(Color.GREEN);
     
     getChildren().clear();  
-    getChildren().addAll(circle, t1, t2, t3, t4);
+    getChildren().addAll(circle, t1, t2, t3, t4, tOne, tSeven, tFive, tEleven, tTwo, tTen, tEight, tFour);
     if (secondHandVisible)
       getChildren().add(sLine);
     if (minuteHandVisible)
