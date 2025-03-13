@@ -134,11 +134,6 @@ public class ClockPane extends Pane {
     circle.setFill(Color.WHITE);
     circle.setStroke(Color.BLACK);
 
-    // Text t1 = new Text(centerX - 5, centerY - clockRadius + 12, "12");
-    // Text t2 = new Text(centerX - clockRadius + 3, centerY + 5, "9");
-    // Text t3 = new Text(centerX + clockRadius - 10, centerY + 3, "3");
-    // Text t4 = new Text(centerX - 3, centerY + clockRadius - 3, "6");
-
     Text t1 = new Text(centerX - 6, centerY - INNER_RADIUS_P, "12");
     Text t2 = new Text(centerX - INNER_RADIUS_N + 3, centerY + 5, "9");
     Text t3 = new Text(centerX + INNER_RADIUS_P + 3, centerY + 3, "3");
@@ -162,7 +157,6 @@ public class ClockPane extends Pane {
       Math.cos(second * (2 * Math.PI / 60));
     Line sLine = new Line(centerX, centerY, secondX, secondY);
     sLine.setStroke(Color.RED);
-
 
     // Draw minute hand
     double mLength = clockRadius * 0.65;
